@@ -1,10 +1,12 @@
-[
-    {
-        "DATA": "2022-02-23",
-        "subscriber": "test1"
-    },
-    {
-        "DATA": "2022-03-21",
-        "subscriber": "test1"
-    }
-]
+{
+    "holiday": [
+        {
+            "DATA": "2022-02-23",
+            "subscriber": "test1"
+        },
+        {
+            "DATA": "2022-03-21",
+            "subscriber": "test1"
+        }
+    ]
+}
