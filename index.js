@@ -1,4 +1,4 @@
-const url = 'https://anhtaka.github.io/holiday.github.io/holiday2.json';
+const url = 'https://anhtaka.github.io/holiday-node/holiday-main.json';
 
 const https = require('https');
 const req = https.request(url, (res) => {
