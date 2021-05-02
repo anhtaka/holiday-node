@@ -12,7 +12,7 @@ const req = https.request(url, (res) => {
         const chunkString = chunk.toString();
         const obj = JSON.parse(chunkString);
         for (item in obj.holiday) {
-            console.log(obj.holiday[item].DATA);
+            console.log(obj.holiday[item].data);
         }
     });
     res.on('end', () => {
