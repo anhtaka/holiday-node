@@ -1,33 +1,25 @@
-var moment = require("moment");
-var NOWDATE = getNow();
-
+var request = require('sync-request');
+const getUrl = 'https://anhtaka.github.io/holiday-node/holiday-main.json';
 var AryHoliday =[];
-const url = 'https://anhtaka.github.io/holiday-node/holiday-main.json';
+var returnCode;
 
-const https = require('https');
-const req = https.request(url, (res) => {
-    res.on('data', (chunk) => {
-        const chunkString = chunk.toString();
-        const obj = JSON.parse(chunkString);
 
-        //AryHoliday = obj.holiday.DATA;
-        for (item in obj.holiday) {
-            //console.log(obj.holiday[item].DATA);
-            AryHoliday.push(obj.holiday[item].DATA);
-        }
-        console.log(AryHoliday);
-    });
+console.log("Start  Return Request Sync");
+returnCode = httpGet(getUrl);
+console.log("Status Code (main)     : "+returnCode);
+console.log(AryHoliday);
+console.log("End    Return Request Sync");
 
-    res.on('end', () => {
-        console.log('JSONデータは以上です。');
-    });
-})
-req.on('error', (e) => {
-console.error(`エラーが出ました： ${e.message}`);
-});
-req.end();
+function httpGet(url){
+  var response = request(
+    'GET',
+    url
+    );
+    console.log("Status Code (function) : "+response.statusCode);
 
-function getNow() {
-    //console.log("TEST");
-    return moment().utcOffset("+09:00").format("YYYY-MM-DD");
+    var obj = JSON.parse(response.getBody('utf8'));
+    for (item in obj.holiday) {
+        AryHoliday.push(obj.holiday[item].DATA);
+    }
+    return response.statusCode;
 }
