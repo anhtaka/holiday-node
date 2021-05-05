@@ -32,6 +32,7 @@ function httpGet(url){
     for (item in obj.holiday) {
         AryHoliday.push(obj.holiday[item].DATA);
     }
+    console.log("AryHoliday="+AryHoliday);
     return response.statusCode;
 }
 /*  input:yyyy-mm-dd  */
