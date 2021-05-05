@@ -27,7 +27,7 @@ function httpGet(url){
     url
     );
     console.log("Status Code (function) : "+response.statusCode);
-
+    var item;
     var obj = JSON.parse(response.getBody('utf8'));
     for (item in obj.holiday) {
         AryHoliday.push(obj.holiday[item].DATA);
@@ -36,32 +36,28 @@ function httpGet(url){
 }
 /*  input:yyyy-mm-dd  */
 function chkHolidayHoliday(valueDate) {
-  var flg = 0;
-　console.log('dddd'+ valueDate.format('dddd'));
-  switch (valueDate.format('dddd')) {
-      case 'Monday':
-      case 'Tuesday':
-      case 'Wednesday':
-      case 'Thursday':
-      case 'Friday':
-        console.log(valueDate.format('YYYY-MM-DD'));
-          //holiday検索
-        var a = AryHoliday.indexOf(valueDate.format('YYYY-MM-DD'));
-        console.log("a=" + a);
-        if(a == -1){
-          flg =  0;
-        }else{
-          flg = 1; //holiday
-        }
-        
-        break;
-      case 'Saturday':
-      case 'Sunday':
-        flg = 1;
-        break;
+  var hFlg = 0;
+  //holiday検索
+  var a = AryHoliday.indexOf(valueDate.format('YYYY-MM-DD'));
+  if(a == -1){
+      //check week
+      switch (valueDate.format('dddd')) {
+          case 'Monday':
+          case 'Tuesday':
+          case 'Wednesday':
+          case 'Thursday':
+          case 'Friday':
+              hFlg =  0; 
+              break;
+          case 'Saturday':
+          case 'Sunday':
+              hFlg = 1;
+              break;
+      }
+  }else{
+      hFlg = 1; //holiday
   }
-  console 
-  return flg
+  return hFlg
 }
 function getNow() {
   //console.log("TEST");
