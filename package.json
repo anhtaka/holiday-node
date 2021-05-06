@@ -12,6 +12,8 @@
   "dependencies": {
     "moment": "^2.29.1",
     "momnet": "^2.29.1",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
     "sync-request": "^6.1.0",
     "then-request": "^6.0.2"
   }
