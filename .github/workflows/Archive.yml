@@ -10,4 +10,5 @@ jobs:
       with:
         type: 'zip'
         filename: 'release.zip'
+        token: ${{ secrets.GITHUB_TOKEN }}
         exclusions: '*.git* /*node_modules/* .editorconfig'
