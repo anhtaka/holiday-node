@@ -4,7 +4,7 @@ var NOWDATE;
 NOWDATE = getNow();
 //---------
 // const getUrl = 'https://anhtaka.github.io/holiday-node/holiday-main.json';
-const getUrl = 'https://http-nodejs-production-fa1a.up.railway.app/hd'
+const getUrl = 'https://http-nodejs-production-fa1a.up.railway.app/holidays'
 var AryHoliday =[];
 var returnCode;
 
